@@ -14,14 +14,14 @@ function initMap()
 			zoom: 13
 		});
 	
+		console.log('making request');
+		$.get('https://data.police.uk/api/locate-neighbourhood',
+			{q : lat+','+lng}
+		)
+		.done( function(data){
+			console.log(data);
+			//drawBoundaryFromCoords()
+		})
 	});
 
-	console.log('making request');
-	$.get('https://data.police.uk/api/locate-neighbourhood',
-		{q : lat+','+lng}
-	)
-	.done( function(data){
-		console.log(data);
-		//drawBoundaryFromCoords()
-	})
 }
