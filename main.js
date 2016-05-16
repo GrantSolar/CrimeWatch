@@ -8,7 +8,7 @@ function initMap()
 		
 		lat = position.coords.latitude;
 		lng = position.coords.longitude;
-		
+		console.log('lat and long set');
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: lat, lng: lng},
 			zoom: 13
@@ -16,6 +16,7 @@ function initMap()
 	
 	});
 
+	console.log('making request');
 	$.get('https://data.police.uk/api/locate-neighbourhood',
 		{q : lat+','+lng}
 	)
