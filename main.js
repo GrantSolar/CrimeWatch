@@ -8,19 +8,27 @@ function initMap()
 		
 		lat = position.coords.latitude;
 		lng = position.coords.longitude;
-		console.log('lat and long set');
+
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: lat, lng: lng},
 			zoom: 13
 		});
 	
-		console.log('making request');
 		$.get('https://data.police.uk/api/locate-neighbourhood',
 			{q : lat+','+lng}
 		)
 		.done( function(data){
 			console.log(data);
-			//drawBoundaryFromCoords()
+			
+		})
+		
+		$.get('https://data.police.uk/api/crimes-street/all-crime',
+			{lat : lat,
+			 lng : lng}
+		)
+		.done( function(data){
+			console.log(data);
+			
 		})
 	});
 
