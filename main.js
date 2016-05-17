@@ -11,8 +11,17 @@ function initMap()
 
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: lat, lng: lng},
-			zoom: 13
+			zoom: 15
 		});
+		
+		var area = new google.maps.Circle({ strokeColor : '#0000FF',
+		strokeOpacity : 0.8,
+		strokeWeight: 2,
+		fillColor : '#0000FF',
+		fillOpacity : 0.35,
+		map : map,
+		center : { lat : lat, lng : lng},
+		radius : 1600});
 	
 		$.get('https://data.police.uk/api/locate-neighbourhood',
 			{q : lat+','+lng}
