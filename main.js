@@ -27,8 +27,20 @@ function initMap()
 			 lng : lng}
 		)
 		.done( function(data){
-			console.log(data);
+			console.log('Crimes in the last month:' + data.length);
 			
+			var dict = {};
+			for(var i = 0; i < data.length; i++)
+			{
+				var cat = data[i].category;
+				if(dict[cat] == undefined)
+					dict[cat] = 1;
+				else
+					dict[cat] += 1;
+			}
+			console.log(data);
+			console.log(dict);
+			console.log(JSON.stringify(dict));
 		})
 	});
 
