@@ -1,6 +1,8 @@
 var lat = 0;
 var lng = 0;
 
+var area;
+
 function drawRadius(lat, lng, radius)
 {
 	area.center = {lat : lat, lng : lng};
@@ -20,7 +22,7 @@ function initMap()
 			zoom: 15
 		});
 		
-		var area = new google.maps.Circle({ strokeColor : '#0000FF',
+		area = new google.maps.Circle({ strokeColor : '#0000FF',
 			strokeOpacity : 0.8,
 			strokeWeight: 2,
 			fillColor : '#0000FF',
@@ -61,7 +63,9 @@ function initMap()
 
 }
 
-$('#radius').on('change', function(e){
-	console.log(e);
-	drawRadius(lat, lng, e);
+$(function(){
+	$('#radius').on('change', function(){
+		console.log($(this).val());
+		drawRadius(lat, lng, $(this).val());
+	})
 })
