@@ -6,10 +6,11 @@ var crimes;
 
 function inRadius(lat1, lng1, lat2, lng2, radius)
 {
+	console.log('checking distance from '+lat1+', '+lng1+' to '+lat2+', '+lng2)
 	var latLngA = new google.maps.LatLng({lat: lat1, lng: lng1});
 	var latLngB = new google.maps.LatLng({lat: lat2, lng: lng2});
 	var dist = google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB);
-	
+	console.log('distance = '+dist);
 	return dist <= radius;
 }
 
