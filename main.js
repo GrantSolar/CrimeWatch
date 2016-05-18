@@ -6,14 +6,12 @@ var crimes;
 
 function inRadius(lat1, lng1, lat2, lng2, radius)
 {
-	return true;
 	console.log('checking distance from '+lat1+', '+lng1+' to '+lat2+', '+lng2)
 	var latLngA = new google.maps.LatLng({lat: lat1, lng: lng1});
 	var latLngB = new google.maps.LatLng({lat: lat2, lng: lng2});
 	var dist = google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB);
 	console.log('distance = '+dist);
-	return true;
-	//return dist <= radius;
+	return dist <= radius;
 }
 
 function changeRadius(lat, lng, radius)
@@ -97,7 +95,7 @@ $(function(){
 		var nearCrimes = crimes.filter( function(item){
 			var crimeLat = parseFloat(item.location.latitude);
 			var crimeLng = parseFloat(item.location.longitude);
-			inRadius(lat, lng, crimeLat, crimeLng, radius);
+			return inRadius(lat, lng, crimeLat, crimeLng, radius);
 		})
 		aggregate(nearCrimes);
 	})
