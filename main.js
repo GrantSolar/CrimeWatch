@@ -5,6 +5,7 @@ var area;
 
 function drawRadius(lat, lng, radius)
 {
+	area.setMap(null);
 	area = new google.maps.Circle({ strokeColor : '#0000FF',
 			strokeOpacity : 0.8,
 			strokeWeight: 2,
