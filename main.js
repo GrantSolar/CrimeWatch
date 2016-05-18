@@ -11,7 +11,8 @@ function inRadius(lat1, lng1, lat2, lng2, radius)
 	var latLngB = new google.maps.LatLng({lat: lat2, lng: lng2});
 	var dist = google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB);
 	console.log('distance = '+dist);
-	return dist <= radius;
+	return true;
+	//return dist <= radius;
 }
 
 function changeRadius(lat, lng, radius)
