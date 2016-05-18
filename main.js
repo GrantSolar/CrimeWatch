@@ -4,11 +4,13 @@ var lng = 0;
 var area;
 var crimes;
 
-function inRadius(lat1, lng1, lat2, lng2)
+function inRadius(lat1, lng1, lat2, lng2, radius)
 {
-	var latLngA = { lat : lat1, lng : lng1 };
-	var latLngB = { lat : lat2, lng : lng2 };
-	console.log(google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB));
+	var latLngA = new google.maps.LatLng({lat: lat1, lng: lng1});
+	var latLngB = new google.maps.LatLng({lat: lat2, lng: lng2});
+	var dist = google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB);
+	
+	return dist <= radius;
 }
 
 function changeRadius(lat, lng, radius)
@@ -86,8 +88,14 @@ function initMap()
 
 $(function(){
 	$('#radius').on('change', function(){
+		var radius = parseInt($(this).val());
 		console.log($(this).val());
 		changeRadius(lat, lng, parseInt($(this).val()));
-		aggregate(crimes);
+		var nearCrimes = crimes.filter( function(item){
+			var crimeLat = parseFloat(item.location.latitude);
+			var crimeLng = parseFloat(item.location.longitude);
+			inRadius(lat, lng, crimeLat, crimeLng, radius);
+		})
+		aggregate(nearCrimes);
 	})
 })
