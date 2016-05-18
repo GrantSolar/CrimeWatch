@@ -72,6 +72,6 @@ function initMap()
 $(function(){
 	$('#radius').on('change', function(){
 		console.log($(this).val());
-		drawRadius(lat, lng, $(this).val());
+		drawRadius(lat, lng, parseInt($(this).val()));
 	})
 })
