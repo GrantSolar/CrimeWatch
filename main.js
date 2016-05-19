@@ -48,7 +48,7 @@ function heatmap(data)
 	var heatmapData = [];
 	for(var i = 0; i < data.length;  i++)
 	{
-		heatmapData.push( new google.maps.LatLng(data.location.latitude, data.location.longitude) );
+		heatmapData.push( new google.maps.LatLng(data[i].location.latitude, data[i].location.longitude) );
 	}
 	
 	var heatmap = new google.maps.visualization.HeatmapLayer({heatmapData});
