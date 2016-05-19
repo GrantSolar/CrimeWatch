@@ -43,6 +43,18 @@ function aggregate(data)
 	console.log(JSON.stringify(dict));
 }
 
+function heatmap(data)
+{
+	var heatmapData = [];
+	for(var i = 0; i < data.length;  i++)
+	{
+		heatmapData.push( new google.maps.LatLng(data.location.latitude, data.location.longitude) );
+	}
+	
+	var heatmap = new google.maps.visualization.HeatmapLayer({heatmapData});
+	heatmap.setMap(map);
+}
+
 function initMap()
 {
 	//Get user's current location and focus map
@@ -80,6 +92,7 @@ function initMap()
 		.done( function(data){
 			crimes = data;
 			aggregate(data);
+			heatmap(data);
 		})
 	});
 
