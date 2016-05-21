@@ -114,7 +114,7 @@ function initMap()
 		})
 		
 		date = formatDate(currDate);
-		getlocalData(date);
+		getLocalData(date);
 	});
 
 }
