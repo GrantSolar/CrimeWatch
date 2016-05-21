@@ -4,6 +4,21 @@ var lng = 0;
 var area;
 var crimes;
 
+var currDate = new Date();
+var startDate = new Date();
+
+//formats a date for passing into date parameter of api request
+function formatDate(date)
+{
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1; //add 1 because js months are 0-indexed
+	
+	if( month < 10 )
+		month = '0' + month;
+	
+	return year + '-' + month;
+}
+
 function inRadius(lat1, lng1, lat2, lng2, radius)
 {
 	var latLngA = new google.maps.LatLng({lat: lat1, lng: lng1});
@@ -85,9 +100,12 @@ function initMap()
 			
 		})
 		
+		
+		date = formatDate(currDate);
 		$.get('https://data.police.uk/api/crimes-street/all-crime',
 			{lat : lat,
-			 lng : lng}
+			 lng : lng,
+			 date : date}
 		)
 		.done( function(data){
 			crimes = data;
