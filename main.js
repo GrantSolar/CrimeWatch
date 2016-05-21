@@ -70,6 +70,19 @@ function heatmap(data)
 	heatmap.setMap(map);
 }
 
+function getLocalData(date)
+{
+	$.get('https://data.police.uk/api/crimes-street/all-crime',
+		{lat : lat,
+		 lng : lng,
+		 date : date})
+	.done( function(data){
+		crimes = data;
+		aggregate(data);
+		heatmap(data);
+	})
+}
+
 function initMap()
 {
 	//Get user's current location and focus map
@@ -100,18 +113,8 @@ function initMap()
 			
 		})
 		
-		
 		date = formatDate(currDate);
-		$.get('https://data.police.uk/api/crimes-street/all-crime',
-			{lat : lat,
-			 lng : lng,
-			 date : date}
-		)
-		.done( function(data){
-			crimes = data;
-			aggregate(data);
-			heatmap(data);
-		})
+		getlocalData(date);
 	});
 
 }
