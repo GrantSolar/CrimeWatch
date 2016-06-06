@@ -109,14 +109,7 @@ function initMap()
 			zoom: 15
 		});
 		
-		area = new google.maps.Circle({ strokeColor : '#0000FF',
-			strokeOpacity : 0.8,
-			strokeWeight: 2,
-			fillColor : '#0000FF',
-			fillOpacity : 0.35,
-			map : map,
-			center : { lat : lat, lng : lng},
-			radius : 1600});
+		changeRadius(lat, lng, radius);
 	
 		$.get('https://data.police.uk/api/locate-neighbourhood',
 			{q : lat+','+lng}
