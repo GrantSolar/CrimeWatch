@@ -33,10 +33,10 @@ function changeRadius(lat, lng, radius)
 {
 	area.setMap(null);
 	area = new google.maps.Circle({ strokeColor : '#0000FF',
-			strokeOpacity : 0.8,
+			strokeOpacity : 0.5,
 			strokeWeight: 2,
 			fillColor : '#0000FF',
-			fillOpacity : 0.2,
+			fillOpacity : 0.1,
 			map : map,
 			center : { lat : lat, lng : lng},
 			radius : radius});
