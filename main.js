@@ -1,5 +1,6 @@
 var lat = 0;
 var lng = 0;
+var radius;
 
 var area;
 var crimes;
@@ -132,7 +133,7 @@ function initMap()
 
 $(function(){
 	$('#radius').on('change', function(){
-		var radius = parseInt($(this).val());
+		radius = parseInt($(this).val());
 		console.log($(this).val());
 		changeRadius(lat, lng, parseInt($(this).val()));
 		var nearCrimes = crimes.filter( function(item){
