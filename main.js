@@ -4,6 +4,8 @@ var lng = 0;
 var area;
 var crimes;
 
+var heatmap;
+
 var currDate = new Date();
 var startDate = new Date();
 
@@ -58,7 +60,7 @@ function aggregate(data)
 	console.log(JSON.stringify(dict));
 }
 
-function heatmap(data)
+function drawHeatmap(data)
 {
 	var heatmapData = [];
 	for(var i = 0; i < data.length;  i++)
@@ -66,7 +68,8 @@ function heatmap(data)
 		heatmapData.push( new google.maps.LatLng(data[i].location.latitude, data[i].location.longitude) );
 	}
 	
-	var heatmap = new google.maps.visualization.HeatmapLayer({ data : heatmapData});
+	//var heatmap = new google.maps.visualization.HeatmapLayer({ data : heatmapData});
+	heatmap.setData( heatmapData );
 	heatmap.setMap(map);
 }
 
@@ -79,12 +82,13 @@ function getLocalData(date)
 	.done( function(data){
 		crimes = data;
 		aggregate(data);
-		heatmap(data);
+		drawHeatmap(data);
 	})
 }
 
 function initMap()
 {
+	heatmap = new google.maps.visualization.HeatmapLayer();
 	//Get user's current location and focus map
 	navigator.geolocation.getCurrentPosition(function(position) {
 		
@@ -113,7 +117,7 @@ function initMap()
 			
 		})
 		
-		date = formatDate(currDate);
+		//date = formatDate(currDate);
 		getLocalData(date);
 	});
 
