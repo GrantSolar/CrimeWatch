@@ -78,12 +78,16 @@ function drawHeatmap(data)
 function getLocalData(date)
 {
 	if(date == undefined)
-		var date = '';
+		/*var date = '';*/
+	var args = {
+		lat : lat,
+		lng : lng};
+	
+	if(date != undefined)
+		args['date'] = date;
 	
 	$.get('https://data.police.uk/api/crimes-street/all-crime',
-		{lat : lat,
-		 lng : lng,
-		 date : date})
+		args)
 	.done( function(data){
 		crimes = data;
 		aggregate(data);
