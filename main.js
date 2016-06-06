@@ -34,7 +34,8 @@ function inRadius(lat1, lng1, lat2, lng2, radius)
 
 function changeRadius(lat, lng, radius)
 {
-	area.setMap(null);
+	if(area != undefined)
+		area.setMap(null);
 	area = new google.maps.Circle({ strokeColor : '#0000FF',
 			strokeOpacity : 0.5,
 			strokeWeight: 2,
