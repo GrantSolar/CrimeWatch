@@ -69,8 +69,7 @@ function drawHeatmap(data)
 	{
 		heatmapData.push( new google.maps.LatLng(data[i].location.latitude, data[i].location.longitude) );
 	}
-	
-	//var heatmap = new google.maps.visualization.HeatmapLayer({ data : heatmapData});
+
 	heatmap.setData( heatmapData );
 	heatmap.setMap(map);
 }
@@ -82,7 +81,7 @@ function getLocalData(date)
 		lat : lat,
 		lng : lng};
 	
-	if(date != undefined)
+	if(date != undefined  && date != '')
 		args['date'] = date;
 	
 	$.get('https://data.police.uk/api/crimes-street/all-crime',
@@ -125,9 +124,8 @@ function initMap()
 			console.log(data);
 			
 		})
-		
-		//date = formatDate(currDate);
-		getLocalData(date);
+
+		getLocalData();
 	});
 
 }
