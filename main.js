@@ -77,8 +77,7 @@ function drawHeatmap(data)
 
 function getLocalData(date)
 {
-	if(date == undefined)
-		/*var date = '';*/
+	console.log('date = ' + date);
 	var args = {
 		lat : lat,
 		lng : lng};
