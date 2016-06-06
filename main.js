@@ -145,12 +145,15 @@ $(function(){
 	$('#search').on('click', function(){
 		var address = document.getElementById("address").value;
 		geocoder.geocode( { 'address': address}, function(results, status) {
-		  if (status == google.maps.GeocoderStatus.OK) {
-			map.setCenter(results[0].geometry.location);
-			console.log(results);
-		  } else {
+			if (status == google.maps.GeocoderStatus.OK)
+			{
+				lat = results[0].geometry.location.lat();
+				lng = results[0].geometry.location.lng();
+				map.setCenter(results[0].geometry.location);
+				console.log(results);
+			} else {
 			alert("Geocode was not successful for the following reason: " + status);
-		  }
+		}
     });
 	})
 })
