@@ -110,7 +110,7 @@ function initMap()
 			zoom: 15
 		});
 		
-		changeRadius(lat, lng, $('#radius').val());
+		changeRadius(lat, lng, 1600);
 	
 		$.get('https://data.police.uk/api/locate-neighbourhood',
 			{q : lat+','+lng}
