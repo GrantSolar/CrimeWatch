@@ -76,7 +76,7 @@ function drawHeatmap(data)
 function getLocalData(date)
 {
 	if(date == undefined)
-		date = '';
+		var date = '';
 	
 	$.get('https://data.police.uk/api/crimes-street/all-crime',
 		{lat : lat,
