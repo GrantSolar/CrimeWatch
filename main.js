@@ -1,6 +1,6 @@
 var lat = 0;
 var lng = 0;
-var radius;
+var radius = 1600;
 
 var area;
 var crimes;
@@ -110,7 +110,7 @@ function initMap()
 			zoom: 15
 		});
 		
-		changeRadius(lat, lng, 1600);
+		changeRadius(lat, lng, radius);
 	
 		$.get('https://data.police.uk/api/locate-neighbourhood',
 			{q : lat+','+lng}
