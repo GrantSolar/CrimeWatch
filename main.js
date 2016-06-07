@@ -81,7 +81,7 @@ function aggregate(data)
 	console.log(dict);
 	console.log(JSON.stringify(dict));
 
-	var summary = '<div class="date"> Showing data for '+ data[0].month +'</div>';
+	var summary = '<div class="date"> Showing data for '+ data[0].month +' within ' + radius + 'm</div>';
 	summary += formatResults(dict);
 	$('#summary').html(summary);
 }
