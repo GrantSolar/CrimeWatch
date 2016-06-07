@@ -78,6 +78,8 @@ function aggregate(data)
 	console.log(data);
 	console.log(dict);
 	console.log(JSON.stringify(dict));
+
+	formatResults(dict);
 }
 
 function drawHeatmap(data)
