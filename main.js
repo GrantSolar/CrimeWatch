@@ -1,3 +1,9 @@
+/* TODO
+ * Set zoom on changing map center
+ * Summarise the results
+ * allow for date range
+*/
+
 var lat = 0;
 var lng = 0;
 var radius = 1600;
@@ -107,7 +113,7 @@ function initMap()
 
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: lat, lng: lng},
-			zoom: 15
+			zoom: 14
 		});
 		
 		changeRadius(lat, lng, radius);
@@ -146,6 +152,7 @@ $(function(){
 				lat = results[0].geometry.location.lat();
 				lng = results[0].geometry.location.lng();
 				map.setCenter(results[0].geometry.location);
+				map.setZoom(14);
 				
 				changeRadius(lat, lng, radius);
 				
