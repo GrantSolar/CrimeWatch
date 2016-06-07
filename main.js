@@ -116,8 +116,8 @@ function getLocalData(date)
 			var crimeLng = parseFloat(item.location.longitude);
 			return inRadius(lat, lng, crimeLat, crimeLng, radius);
 		})
-		aggregate(data);
-		drawHeatmap(data);
+		aggregate(nearCrimes);
+		drawHeatmap(crimes);
 	})
 }
 
