@@ -6,26 +6,17 @@
 	<script src="main.js" ></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBivyIHAj_PKzf1npWe7_uGF78YLWv1yYc&libraries=visualization&callback=initMap"
 			async defer></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <input id="radius" type="range" min="100" max="1600" value="1600"></input>
 <input id="address" type="text"></input> <button id="search">Search</button>
 
-<div id="summary">
-<span class="type">Anti-social behaviour</span><span class="number"></span>
-<span class="type">Bicycle theft</span><span class="number"></span>
-<span class="type">Burglary</span><span class="number"></span>
-<span class="type">Criminal Damage Arson</span><span class="number"></span>
-<span class="type">Drugs</span><span class="number"></span>
-<span class="type">Other theft</span><span class="number"></span>
-<span class="type">Possession of Weapons</span><span class="number"></span>
-<span class="type">Public Order</span><span class="number"></span>
-<span class="type">Shoplifting</span><span class="number"></span>
-<span class="type">Theft from the Person</span><span class="number"></span>
-<span class="type">Vehicle Crime</span><span class="number"></span>
-<span class="type">Violent Crime</span><span class="number"></span>
+<div id="map" style="height:100%"></div>
+
+<div id="sidebar">
+	<div id="summary"></div>
 </div>
 
-<div id="map" style="height:100%"></div>
 </body>
 </html>
