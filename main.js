@@ -57,8 +57,9 @@ function formatResults(data)
 	var result = '';
 	for(key in data)
 	{
+		result += '<div class="record">';
 		result += '<span class="type">' + key + '</span> : ';
-		result += '<span class="number">' + data[key] + '</span>';
+		result += '<span class="number">' + data[key] + '</span></div>';
 	}
 	return result;
 }
