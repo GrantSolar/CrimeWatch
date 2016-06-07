@@ -1,5 +1,5 @@
 /* TODO
- * Set zoom on changing map center
+ * search for address on pressing enter
  * Summarise the results
  * allow for date range
 */
@@ -50,6 +50,16 @@ function changeRadius(lat, lng, radius)
 			map : map,
 			center : { lat : lat, lng : lng},
 			radius : radius});
+}
+
+function formatResults(data)
+{
+	var result = '';
+	for(key in data)
+	{
+		result += key + ': ' + data[key] + '</br>';
+	}
+	console.log(result);
 }
 
 function aggregate(data)
