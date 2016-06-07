@@ -57,9 +57,10 @@ function formatResults(data)
 	var result = '';
 	for(key in data)
 	{
-		result += key + ': ' + data[key] + '</br>';
+		result += '<span class="type">' + key + '</span> : ';
+		result += '<span class="number">' + data[key] + '</span>';
 	}
-	console.log(result);
+	return result;
 }
 
 function aggregate(data)
@@ -79,7 +80,8 @@ function aggregate(data)
 	console.log(dict);
 	console.log(JSON.stringify(dict));
 
-	formatResults(dict);
+	var summary = formatResults(dict);
+	$('#summary').html(summary);
 }
 
 function drawHeatmap(data)
