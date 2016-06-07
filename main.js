@@ -1,6 +1,6 @@
 /* TODO
  * search for address on pressing enter
- * Summarise the results
+ * searching address gives results for max radius, not that set
  * allow for date range
 */
 
