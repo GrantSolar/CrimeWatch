@@ -1,7 +1,7 @@
 /* TODO
  * search for address on pressing enter
- * searching address gives results for max radius, not that set
  * allow for date range
+ * doesn't update stats when changing to radius with no crimes in e.g. 100
 */
 
 var lat = 0;
@@ -54,13 +54,14 @@ function changeRadius(lat, lng, radius)
 
 function formatResults(data)
 {
-	var result = '';
+	var result = '<table>';
 	for(key in data)
 	{
-		result += '<div class="record">';
-		result += '<span class="type">' + key + '</span> : ';
-		result += '<span class="number">' + data[key] + '</span></div>';
+		result += '<tr class="record">';
+		result += '<td class="type">' + key + '</td>';
+		result += '<td class="number">' + data[key] + '</td></td>';
 	}
+	result += '</table>';
 	return result;
 }
 
