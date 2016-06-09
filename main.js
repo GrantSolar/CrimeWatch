@@ -48,6 +48,7 @@ function changeRadius(lat, lng, radius)
 			strokeWeight: 2,
 			fillColor : '#0000FF',
 			fillOpacity : 0,
+			clickable : false,
 			map : map,
 			center : { lat : lat, lng : lng},
 			radius : radius});
