@@ -10,6 +10,7 @@ var radius = 1600;
 
 var area;
 var crimes;
+var dateRange;
 
 //Single API objects
 var geocoder;
@@ -82,7 +83,9 @@ function aggregate(data)
 	console.log(dict);
 	console.log(JSON.stringify(dict));
 
-	var summary = '<div class="date"> Showing data for '+ data[0].month +' within ' + radius + 'm</div>';
+	if(data[0].month != undefined)
+		dateRange = data[0].month;
+	var summary = '<div class="date"> Showing data for '+ dateRange +' within ' + radius + 'm</div>';
 	summary += formatResults(dict);
 	$('#summary').html(summary);
 }
