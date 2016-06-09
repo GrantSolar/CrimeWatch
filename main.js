@@ -83,7 +83,7 @@ function aggregate(data)
 	console.log(dict);
 	console.log(JSON.stringify(dict));
 
-	if(data[0].month != undefined)
+	if(data[0] != undefined)
 		dateRange = data[0].month;
 	var summary = '<div class="date"> Showing data for '+ dateRange +' within ' + radius + 'm</div>';
 	summary += formatResults(dict);
