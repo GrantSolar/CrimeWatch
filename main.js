@@ -117,7 +117,7 @@ function drawHeatmap(data)
 	var heatmapData = [];
 	for(cat in data)
 	{
-		console.log('category = ' + keys(data)[i]);
+		console.log('category = ' + Object.keys(data)[i]);
 		for(var i = 0; i < cat.length; i++)
 		{
 			heatmapData.push( new google.maps.LatLng(cat[i].location.latitude, cat[i].location.longitude) );
