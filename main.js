@@ -10,6 +10,7 @@ var radius = 1600;
 
 var area;
 var crimes;
+var filters = {};
 var dateRange;
 
 //Single API objects
@@ -59,6 +60,9 @@ function formatResults(data, radius)
 	var result = '<table>';
 	for(key in data)
 	{
+		if(filters[cat] == undefined)
+			filters[cat] = true;
+
 		var filtered = data[key].filter( function(item){
 			var crimeLat = parseFloat(item.location.latitude);
 			var crimeLng = parseFloat(item.location.longitude);
@@ -68,6 +72,10 @@ function formatResults(data, radius)
 		if( count  > 0 )
 		{
 			result += '<tr class="record">';
+			result += '<td><input type="checkbox" value="'+key+'" ';
+			if(filters[cat] = true)
+				result += 'checked';
+			result += ' /></td>';
 			result += '<td class="type">' + key + '</td>';
 			result += '<td class="number">' + count + '</td></td>';
 		}
