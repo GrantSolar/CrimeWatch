@@ -203,7 +203,7 @@ $(function(){
 		console.log($(this).val());
 		changeRadius(lat, lng, radius);
 
-		aggregate(nearCrimes, radius);
+		aggregate(crimes, radius);
 	});
 	
 	$('#search').on('click', function(){
