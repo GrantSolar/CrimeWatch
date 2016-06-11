@@ -71,7 +71,7 @@ function formatResults(data, radius)
 		var count = filtered.length;
 
 		result += '<tr class="record';
-		if( count  > 0 )
+		if( count == 0 )
 			result +=  ' empty';
 		result += '">';
 		result += '<td><input type="checkbox" value="'+key+'" ';
