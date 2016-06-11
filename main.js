@@ -59,9 +59,10 @@ function formatResults(data)
 	var result = '<table>';
 	for(key in data)
 	{
+		var count = data[key].length;
 		result += '<tr class="record">';
 		result += '<td class="type">' + key + '</td>';
-		result += '<td class="number">' + data[key] + '</td></td>';
+		result += '<td class="number">' + count + '</td></td>';
 	}
 	result += '</table>';
 	return result;
@@ -86,11 +87,11 @@ function categorise(data)
 	return crimeSets;
 }
 
-function aggregate(data)
+function aggregate(data, radius)
 {
-	console.log('Crimes in the last month:' + data.length);
+//	console.log('Crimes in the last month:' + data.length);
 	
-	var dict = {};
+	/*var dict = {};
 	for(var i = 0; i < data.length; i++)
 	{
 		var cat = data[i].category;
@@ -98,14 +99,12 @@ function aggregate(data)
 			dict[cat] = 1;
 		else
 			dict[cat] += 1;
-	}
+	}*/
 	console.log(data);
-	console.log(dict);
-	console.log(JSON.stringify(dict));
 
-	if(data[0] != undefined)
-		dateRange = data[0].month;
-	var summary = '<div class="date"> Showing data for '+ dateRange +' within ' + radius + 'm</div>';
+	//if(data[0] != undefined)
+	//	dateRange = data[0].month;
+	var summary = '';// '<div class="date"> Showing data for '+ dateRange +' within ' + radius + 'm</div>';
 	summary += formatResults(dict);
 	$('#summary').html(summary);
 }
@@ -159,7 +158,7 @@ function getLocalData(date)
 			var crimeLng = parseFloat(item.location.longitude);
 			return inRadius(lat, lng, crimeLat, crimeLng, radius);
 		})
-		aggregate(nearCrimes);
+		aggregate(filtered, radius);
 	})
 }
 
