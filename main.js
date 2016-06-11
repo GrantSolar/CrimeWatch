@@ -234,11 +234,8 @@ $(function(){
 	});
 
 	$('body').on('click', 'input[type=checkbox]', function(){
-		console.log('checkbox clicked');
 		var name = $(this).val();
-		console.log(name);
 		filters[name] = $(this).is(':checked');
-		console.log(filters[name]);
 	});
 
 })
