@@ -60,8 +60,8 @@ function formatResults(data, radius)
 	var result = '<table>';
 	for(key in data)
 	{
-		if(filters[cat] == undefined)
-			filters[cat] = true;
+		if(filters[key] == undefined)
+			filters[key] = true;
 
 		var filtered = data[key].filter( function(item){
 			var crimeLat = parseFloat(item.location.latitude);
@@ -73,7 +73,7 @@ function formatResults(data, radius)
 		{
 			result += '<tr class="record">';
 			result += '<td><input type="checkbox" value="'+key+'" ';
-			if(filters[cat] = true)
+			if(filters[key] == true)
 				result += 'checked';
 			result += ' /></td>';
 			result += '<td class="type">' + key + '</td>';
