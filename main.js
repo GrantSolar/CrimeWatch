@@ -153,11 +153,11 @@ function getLocalData(date)
 		//draw the heatmap
 		drawHeatmap(filtered);
 
-		var nearCrimes = crimes.filter( function(item){
+		/*var nearCrimes = crimes.filter( function(item){
 			var crimeLat = parseFloat(item.location.latitude);
 			var crimeLng = parseFloat(item.location.longitude);
 			return inRadius(lat, lng, crimeLat, crimeLng, radius);
-		})
+		})*/
 		aggregate(filtered, radius);
 	})
 }
