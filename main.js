@@ -75,7 +75,9 @@ function categorise(data)
 	var crimeSets = {};
 	for(crime in data)
 	{
+		console.log('crime = '  + JSON.stringify(crime));
 		var cat = crime.category;
+		console.log('cat = ' + cat);
 		if(crimeSets[cat] == undefined)
 			crimeSets[cat] = [];
 		else
