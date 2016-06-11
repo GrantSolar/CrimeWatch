@@ -72,17 +72,16 @@ function categorise(data)
 {
 	console.log('categorising data...');
 	console.log(data);
+	
 	var crimeSets = {};
 	for(var i = 0; i < data.length; i++)
 	{
 		var crime = data[i];
-		console.log('crime = '  + JSON.stringify(crime));
 		var cat = crime.category;
-		console.log('cat = ' + cat);
+
 		if(crimeSets[cat] == undefined)
 			crimeSets[cat] = [];
-		else
-			crimeSets[cat].push(crime);
+		crimeSets[cat].push(crime);
 	}
 	return crimeSets;
 }
