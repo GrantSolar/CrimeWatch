@@ -14,7 +14,7 @@ var dateRange;
 
 //Single API objects
 var geocoder;
-var heatmap;
+var heatmaps = {};
 
 var currDate = new Date();
 var startDate = new Date();
@@ -67,6 +67,21 @@ function formatResults(data)
 	return result;
 }
 
+//restructures json data to organise by crime-type
+function categorise(data)
+{
+	var crimeSets = {};
+	for(crime in data)
+	{
+		var cat = crime.category;
+		if(crimeSets[cat] == undefined)
+			crimeSets[cat] = [];
+		else
+			crimeSets[cat].push(crime);
+	}
+	return crimeSets;
+}
+
 function aggregate(data)
 {
 	console.log('Crimes in the last month:' + data.length);
@@ -91,7 +106,7 @@ function aggregate(data)
 	$('#summary').html(summary);
 }
 
-function drawHeatmap(data)
+function drawHeatmap(cat, data)
 {
 	var heatmapData = [];
 	for(var i = 0; i < data.length;  i++)
@@ -99,8 +114,8 @@ function drawHeatmap(data)
 		heatmapData.push( new google.maps.LatLng(data[i].location.latitude, data[i].location.longitude) );
 	}
 
-	heatmap.setData( heatmapData );
-	heatmap.setMap(map);
+	heatmaps[cat].setData( heatmapData );
+	heatmaps[cat].setMap(map);
 }
 
 function getLocalData(date)
@@ -116,8 +131,18 @@ function getLocalData(date)
 	$.get('https://data.police.uk/api/crimes-street/all-crime',
 		args)
 	.done( function(data){
-		crimes = data;
-		drawHeatmap(crimes);
+		//what we want to do is call drawHeatmap once for each set of crimes
+		crimes = categorise(data);
+
+		//organise data into separate groups
+		//call heatmap for multiple data sets
+		for(cat in crimes)
+		{
+			if(heatmaps[cat] == undefined)
+				heatmaps[cat] = new google.maps.visualization.HeatmapLayer();
+			drawHeatmap(cat, crimes[cat]);
+		}
+		//drawHeatmap(crimes);
 		var nearCrimes = crimes.filter( function(item){
 			var crimeLat = parseFloat(item.location.latitude);
 			var crimeLng = parseFloat(item.location.longitude);
