@@ -125,6 +125,21 @@ function aggregate(data, radius)
 	$('#summary').html(summary);
 }
 
+function filterData(categorised)
+{
+	var filtered = {};
+	for(key in crimes)
+	{
+		if(filters[key] || filters[key] == undefined )
+		{
+			console.log('filter showing crimes for '+ key);
+			console.log(crimes[key]);
+			filtered[key] = crimes[key];
+		}
+	}
+	return filtered;
+}
+
 function drawHeatmap(data)
 {
 	console.log('drawing heatmap...');
@@ -164,16 +179,7 @@ function getLocalData(date)
 		console.log(crimes);
 
 		//apply any category filters
-		var filtered = {};
-		for(key in crimes)
-		{
-			if(filters[key] || filters[key] == undefined )
-			{
-				console.log('filter showing crimes for '+ key);
-				console.log(crimes[key]);
-				filtered[key] = crimes[key];
-			}
-		}
+		var filtered = filterData(crimes);
 
 		//draw the heatmap
 		drawHeatmap(filtered);
@@ -245,6 +251,9 @@ $(function(){
 	$('body').on('click', 'input[type=checkbox]', function(){
 		var name = $(this).val();
 		filters[name] = $(this).is(':checked');
+
+		var filtered = filterData(crimes);
+		drawHeatmap(filtered);
 	});
 
 })
