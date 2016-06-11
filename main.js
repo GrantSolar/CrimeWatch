@@ -65,9 +65,12 @@ function formatResults(data, radius)
 			return inRadius(lat, lng, crimeLat, crimeLng, radius);
 		});
 		var count = filtered.length;
-		result += '<tr class="record">';
-		result += '<td class="type">' + key + '</td>';
-		result += '<td class="number">' + count + '</td></td>';
+		if( count  > 0 )
+		{
+			result += '<tr class="record">';
+			result += '<td class="type">' + key + '</td>';
+			result += '<td class="number">' + count + '</td></td>';
+		}
 	}
 	result += '</table>';
 	return result;
@@ -158,11 +161,6 @@ function getLocalData(date)
 		//draw the heatmap
 		drawHeatmap(filtered);
 
-		/*var nearCrimes = crimes.filter( function(item){
-			var crimeLat = parseFloat(item.location.latitude);
-			var crimeLng = parseFloat(item.location.longitude);
-			return inRadius(lat, lng, crimeLat, crimeLng, radius);
-		})*/
 		aggregate(filtered, radius);
 	})
 }
