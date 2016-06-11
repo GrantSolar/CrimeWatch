@@ -117,7 +117,7 @@ function drawHeatmap(data)
 	var heatmapData = [];
 	for(cat in data)
 	{
-		console.log('category = ' + Object.keys(data)[i]);
+		console.log('category = ' + cat;
 		var crimeSet = data[cat];
 		for(var i = 0; i < crimeSet.length; i++)
 		{
