@@ -201,13 +201,9 @@ $(function(){
 	$('#radius').on('change', function(){
 		radius = parseInt($(this).val());
 		console.log($(this).val());
-		changeRadius(lat, lng, parseInt($(this).val()));
-		var nearCrimes = crimes.filter( function(item){
-			var crimeLat = parseFloat(item.location.latitude);
-			var crimeLng = parseFloat(item.location.longitude);
-			return inRadius(lat, lng, crimeLat, crimeLng, radius);
-		})
-		aggregate(nearCrimes);
+		changeRadius(lat, lng, radius);
+
+		aggregate(nearCrimes, radius);
 	});
 	
 	$('#search').on('click', function(){
