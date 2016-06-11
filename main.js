@@ -235,6 +235,8 @@ $(function(){
 
 	$('input[type=checkbox]').on('click', function(){
 		var name = $(this).val();
+		console.log(name);
 		filters[name] = $(this).is(':checked');
+		console.log(filters[name]);
 	});
 })
