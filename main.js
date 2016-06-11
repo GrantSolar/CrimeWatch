@@ -118,9 +118,10 @@ function drawHeatmap(data)
 	for(cat in data)
 	{
 		console.log('category = ' + Object.keys(data)[i]);
-		for(var i = 0; i < cat.length; i++)
+		var crimeSet = data[cat];
+		for(var i = 0; i < crimeSet.length; i++)
 		{
-			heatmapData.push( new google.maps.LatLng(cat[i].location.latitude, cat[i].location.longitude) );
+			heatmapData.push( new google.maps.LatLng(crimeSet[i].location.latitude, crimeSet[i].location.longitude) );
 		}
 	}
 
