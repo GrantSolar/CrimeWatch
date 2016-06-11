@@ -105,7 +105,7 @@ function aggregate(data, radius)
 	//if(data[0] != undefined)
 	//	dateRange = data[0].month;
 	var summary = '';// '<div class="date"> Showing data for '+ dateRange +' within ' + radius + 'm</div>';
-	summary += formatResults(dict);
+	summary += formatResults(data);
 	$('#summary').html(summary);
 }
 
