@@ -229,7 +229,12 @@ $(function(){
 				console.log(results);
 			} else {
 			alert("Geocode was not successful for the following reason: " + status);
-		}
-    });
-	})
+			}
+    	});
+	});
+
+	$('input[type=checkbox]').on('click', function(){
+		var name = $(this).val();
+		filters[name] = $(this).is(':checked');
+	});
 })
