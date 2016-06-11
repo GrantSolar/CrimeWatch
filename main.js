@@ -72,7 +72,7 @@ function categorise(data)
 {
 	console.log('categorising data...');
 	console.log(data);
-	
+
 	var crimeSets = {};
 	for(var i = 0; i < data.length; i++)
 	{
@@ -117,7 +117,7 @@ function drawHeatmap(cat, data)
 	var heatmapData = [];
 	for(var i = 0; i < data.length;  i++)
 	{
-		heatmapData.push( new google.maps.LatLng(data[cat][i].location.latitude, data[i].location.longitude) );
+		heatmapData.push( new google.maps.LatLng(data[i].location.latitude, data[i].location.longitude) );
 	}
 
 	heatmaps[cat].setData( heatmapData );
