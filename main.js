@@ -70,6 +70,8 @@ function formatResults(data)
 //restructures json data to organise by crime-type
 function categorise(data)
 {
+	console.log('categorising data...');
+	console.log(data);
 	var crimeSets = {};
 	for(crime in data)
 	{
