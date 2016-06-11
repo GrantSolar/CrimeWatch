@@ -108,10 +108,12 @@ function aggregate(data)
 
 function drawHeatmap(cat, data)
 {
+	console.log('drawing heatmap for '+ cat);
+	console.log(data);
 	var heatmapData = [];
 	for(var i = 0; i < data.length;  i++)
 	{
-		heatmapData.push( new google.maps.LatLng(data[i].location.latitude, data[i].location.longitude) );
+		heatmapData.push( new google.maps.LatLng(data[cat][i].location.latitude, data[i].location.longitude) );
 	}
 
 	heatmaps[cat].setData( heatmapData );
@@ -133,7 +135,8 @@ function getLocalData(date)
 	.done( function(data){
 		//what we want to do is call drawHeatmap once for each set of crimes
 		crimes = categorise(data);
-
+		console.log('categorised data');
+		console.log(crimes);
 		//organise data into separate groups
 		//call heatmap for multiple data sets
 		for(cat in crimes)
