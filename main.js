@@ -115,12 +115,12 @@ function drawHeatmap(data)
 	console.log('drawing heatmap...');
 	console.log(data);
 	var heatmapData = [];
-	for(var i = 0; i < data.length;  i++)
+	for(cat in data)
 	{
 		console.log('category = ' + keys(data)[i]);
-		for(var j = 0; j < data[i].length; j++)
+		for(var i = 0; i < cat.length; i++)
 		{
-			heatmapData.push( new google.maps.LatLng(data[i][j].location.latitude, data[i][j].location.longitude) );
+			heatmapData.push( new google.maps.LatLng(cat[i].location.latitude, cat[i].location.longitude) );
 		}
 	}
 
