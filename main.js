@@ -254,9 +254,9 @@ $(function(){
 		filters[name] = $(this).is(':checked');
 
 		if(filters[name])
-			$('.record[name="'+name+'"]').addClass('unselected');
-		else
 			$('.record[name="'+name+'"]').removeClass('unselected');
+		else
+			$('.record[name="'+name+'"]').addClass('unselected');
 
 		var filtered = filterData(crimes);
 		drawHeatmap(filtered);
