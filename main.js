@@ -73,7 +73,7 @@ function formatResults(data, radius)
 		result += '<tr class="record';
 		if( count == 0 )
 			result +=  ' empty';
-		result += '">';
+		result += '" name="'+key+'">';
 		result += '<td><input type="checkbox" value="'+key+'" ';
 		if(filters[key] == true)
 			result += 'checked';
@@ -252,6 +252,11 @@ $(function(){
 	$('body').on('click', 'input[type=checkbox]', function(){
 		var name = $(this).val();
 		filters[name] = $(this).is(':checked');
+
+		if(filters[name])
+			$('.record[name="'+key+'"]').addClass('unselected');
+		else
+			$('.record[name="'+key+'"]').removeClass('unselected');
 
 		var filtered = filterData(crimes);
 		drawHeatmap(filtered);

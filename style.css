@@ -25,5 +25,9 @@ tr:nth-child(odd)
 .empty
 {
   color : #999999;
-  text-decoration: line-through;
+}
+
+.unselected
+{
+  text-decoration : line-through;
 }
