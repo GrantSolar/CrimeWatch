@@ -163,6 +163,7 @@ function drawHeatmap(data)
 function getLocalData(date)
 {
 	console.log('date = ' + date);
+	var start = performance.now();
 	var args = {
 		lat : lat,
 		lng : lng};
@@ -174,18 +175,30 @@ function getLocalData(date)
 		args)
 	.done( function(data){
 		
+		var got = performance.now();
+		console.log('fetched from api in '+(got - start));
 		//group the data by category
 		crimes = categorise(data);
+		var cat = performance.now();
+		console.log('categorised in '+ (cat - got));
 		console.log('categorised data');
 		console.log(crimes);
 
 		//apply any category filters
 		var filtered = filterData(crimes);
+		var filt = performance.now();
+		console.log('filtered in ' + (filt - cat));
 
 		//draw the heatmap
 		drawHeatmap(filtered);
+		var drawn = performance.now();
+		console.log('drawn in ' + (drawn - filt));
 
 		aggregate(filtered, radius);
+		var agg = performance.now();
+		console.log('aggregated in ' + (agg - drawn));
+
+		console.log('getLocalData took ' + (agg - start));
 	})
 }
 
