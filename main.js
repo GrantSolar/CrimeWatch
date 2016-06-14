@@ -219,8 +219,8 @@ function initMap()
 
 		map.addListener('click', function(pos){
 			console.log(pos);
-			lat = pos.position.latLng.lat;
-			lng = pos.position.latLng.lng;
+			lat = pos.latLng.lat;
+			lng = pos.latLng.lng;
 			getLocalData();
 		});
 		
