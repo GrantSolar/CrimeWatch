@@ -216,6 +216,12 @@ function initMap()
 			center: {lat: lat, lng: lng},
 			zoom: 14
 		});
+
+		map.addListener('click', function(pos){
+			lat = pos.position.lat;
+			lng = pos.position.lng;
+			getLocalData();
+		});
 		
 		changeRadius(lat, lng, radius);
 	
