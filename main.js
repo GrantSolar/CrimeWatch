@@ -218,8 +218,8 @@ function initMap()
 		});
 
 		map.addListener('click', function(pos){
-			lat = pos.latLng.lat;
-			lng = pos.latLng.lng;
+			lat = pos.latLng.lat();
+			lng = pos.latLng.lng();
 			console.log('fetching new data for ' + lat+ ', '+ lng);
 			getLocalData();
 			changeRadius(lat, lng, radius);
