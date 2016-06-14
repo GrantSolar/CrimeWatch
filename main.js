@@ -218,7 +218,7 @@ function initMap()
 		});
 
 		map.addListener('click', function(pos){
-			console.log('onClick  event fired for ' + pos);
+			console.log(pos);
 			lat = pos.position.lat;
 			lng = pos.position.lng;
 			getLocalData();
