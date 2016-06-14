@@ -222,6 +222,7 @@ function initMap()
 			lat = pos.latLng.lat;
 			lng = pos.latLng.lng;
 			getLocalData();
+			changeRadius(lat, lng, radius);
 		});
 		
 		changeRadius(lat, lng, radius);
