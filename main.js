@@ -218,9 +218,9 @@ function initMap()
 		});
 
 		map.addListener('click', function(pos){
-			console.log(pos);
 			lat = pos.latLng.lat;
 			lng = pos.latLng.lng;
+			console.log('fetching new data for ' + lat+ ', '+ lng);
 			getLocalData();
 			changeRadius(lat, lng, radius);
 		});
